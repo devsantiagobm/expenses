@@ -1,0 +1,23 @@
+@use './colors' as *;
+
+
+.button{
+    $position: 40px;
+
+    position: fixed;
+    max-width: 48px;
+    aspect-ratio: 1;
+    background-color: $light-black;
+    box-shadow: 0 0 12px -6px $white;
+    border-radius: 50%;
+    padding: 12px;
+    bottom: $position;
+    right: $position;
+    cursor: pointer;
+    transition: box-shadow .2s ease;
+
+    &:hover{
+        box-shadow: 0 0 12px -3px $white;
+    }
+
+}

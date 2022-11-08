@@ -1,0 +1,93 @@
+@use './colors' as *;
+@use './fonts' as *;
+
+
+.resetButton {
+    background-color: $error;
+    width: 48px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 12px;
+    position: fixed;
+    box-shadow: 0 0 12px -8px #ededed;
+    bottom: 110px;
+    right: 40px;
+    transition: box-shadow .2s ease;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 12px -6px #ededed;
+    }
+}
+
+.reset {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background-color: rgba(0 0 0/.9);
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    visibility: hidden;
+    opacity: 0;
+
+    &__box {
+        min-width: 300px;
+        color: $white;
+    }
+
+    &__title {
+        background-color: $black;
+        padding: 12px 24px;
+        color: $white;
+        font-weight: $medium;
+        width: 100%;
+    }
+
+    &__options {
+        display: flex;
+    }
+
+    &__cancel,
+    &__confirm {
+        width: 100%;
+        padding: 12px 24px;
+        font-size: .9rem;
+        background-color: $light-black;
+        transition: background-color .2s ease;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+
+        &:hover {
+            background-color: #282828;
+        }
+    }
+
+    &__confirm {
+        background-color: $error;
+
+        &:hover {
+            background-color: #da2222;
+        }
+    }
+
+    &--active{
+        animation: show-in .5s ease both;
+
+        @keyframes show-in {
+            from{ visibility: hidden; opacity: 0;}
+            to{ visibility: visible; opacity: 1;}
+        }
+    }
+
+    &--hidden{
+        animation: show-off .5s ease both;
+
+        @keyframes show-off {
+            from{ visibility: visible; opacity: 1;}
+            to{ visibility: hidden; opacity: 0;}
+        }
+    }
+
+}

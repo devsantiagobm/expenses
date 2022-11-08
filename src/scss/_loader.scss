@@ -1,0 +1,58 @@
+@use './colors' as *;
+@use './fonts' as *;
+
+.loader{
+    position: fixed;
+    inset: 0;
+    z-index: 1000000;
+    background-color: $light-black;
+    display: grid;
+    place-items: center;
+    $size: 40px;
+
+    &--hidden{
+        animation: show-off .5s ease both;
+        animation-delay: .5s;
+    }
+
+
+    &__box{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        color: $white;
+    }
+
+
+    .loader__shape {
+        width: $size;
+        height: $size;
+        border: 2px solid #fff5;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+      .loader__shape::after {
+        content: '';  
+        box-sizing: border-box;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        background: $white;
+        width: 2px;
+        height: calc($size / 2);
+        transform: translateX(-50%);
+      }
+          
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      } 
+}

@@ -1,0 +1,330 @@
+@use './colors' as *;
+@use './fonts' as *;
+
+.information{
+    color: $white;
+    width: clamp(492px, 45vw, 712px);
+    margin: 0 auto 64px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__shape{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 32px;
+        min-height: 60vh;
+    }
+
+    &__title{
+        font-weight: $regular;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    &__data{
+        width: 100%;
+        display: grid;
+        place-items: center;
+    }
+
+    &__flex{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 clamp(64px, 8vw, 80px);
+
+    }
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    &__item{
+        width: 100%;
+    }
+
+}
+
+
+.item{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &__title{
+        font-size: 1rem;
+        color: $dark-white;
+    }
+
+    &__quantity{
+        font-size: 2rem;
+        font-weight: $medium;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }
+
+}
+
+
+.bill{
+    width: 100%;
+    margin: 24px 0;
+
+    &--change{
+        animation: show-in .8s ease;
+    }
+}
+
+.filter{
+    margin: 24px 0;
+
+    &__button{
+        background-color: $extra-light-black;
+        width: 100%;
+        padding: 12px 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 0 24px;
+    }
+
+    &__picture{
+        display: grid;
+        place-items: center;
+    }
+
+    &__list{
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .2s ease;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item{
+        background-color: $extra-light-black;
+        padding: 8px 16px;
+        transition: background-color .1s ease;
+        cursor: pointer;
+        text-transform: capitalize;
+
+        &:hover, &--active{
+            background-color: #4d4c4c;
+        }
+        
+        &--clean{
+            background-color: #4d4c4c;
+        }
+    }
+
+}
+
+.expense{
+    margin: 24px 0;
+    width: 100%;
+    background-color: $black;
+    display: flex;
+    align-items: center;
+    padding: 16px 32px 16px 24px;
+
+    &--hidden{
+        display: none;
+    }
+
+    &__picture{
+        overflow: hidden;
+        max-width: 64px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: $extra-light-black;
+        padding: 12px;
+    }
+
+    &__flex{
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        width: 100%;
+        max-width: 80%;
+    }
+    
+    &__data{
+        display: flex;
+        max-width: 40%;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    &__date{
+        display: inline;
+        font-weight: $regular;
+        margin: 0 0 0 4px;
+    }
+
+    &__type{
+        font-size: .8rem;
+        color: $dark-white;
+    }
+
+    &__invoice{
+        font-weight: $medium;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__added{
+        font-size: .8rem;
+        font-weight: $medium;
+    }
+
+    &__amount{
+        font-weight: $medium;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    &__actions{
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        align-items: center;
+        max-width: 20%;
+
+    }
+    
+    &__delete{
+        max-width: 28px;
+        background-color: $error;
+        padding: 4px;
+        cursor: pointer;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+    }
+
+}
+
+.shape{
+    &__circle{
+        aspect-ratio: 1;
+        background-color: $white;
+        width: 240px;
+        height: auto;
+        border-radius: 50%;
+        border: 1px solid $white;
+        position: relative;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 0 23px -13px rgba(224,224,224,1);
+    }
+
+    &__progress{
+        --deg: 0deg;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-image: conic-gradient(#fff, #aaa, #aaa, #fff var(--deg),  $light-black var(--deg));
+        position: absolute;
+        inset: 0;
+    }
+
+    &__inner{
+        position: relative;
+        z-index: 1;
+        width: 92%;
+        aspect-ratio: 1;
+        background-color: $light-black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
+        border-radius: 50%;
+        color: $white;
+        box-shadow: inset 12px 10px 23px -23px rgba(224,224,224,1),
+        inset -6px -10px 23px -23px rgba(224,224,224,1);
+    }
+
+    &__flex{
+        display: flex;
+        align-items: flex-end;
+
+        gap: 2px;
+    }
+    
+    &__porcentaje{
+        font-weight: $medium;
+        font-size: 2.5rem;
+    }
+    
+    &__symbol{
+        font-weight: $regular;
+        display: -webkit-inline-box;
+    }
+
+
+}
+
+@media screen and (max-width: 572px){
+
+    .information{
+        width: 90%;
+
+        &__flex{
+            // flex-direction: column-reverse;
+            align-items: center;
+            padding: 0;
+        }
+
+        &__list{
+            align-items: flex-start;
+            width: 100%;
+        }
+    }
+
+    .item{
+        gap: 0px;
+        
+        &__title{
+            font-size: .9rem;
+        }
+        &__quantity{
+            font-size: 1.5rem;
+        }
+    }
+
+    
+    .expense{
+        flex-direction: column;
+        align-items: flex-start ;
+        gap: 12px;
+
+        &__data{
+            max-width: 100%;
+        }
+        &__flex{
+            max-width: 100%;
+            width: 100%;
+        }
+
+        &__actions{
+            max-width: 100%;
+            width: 100%;
+            justify-content: flex-start;
+        }
+    }
+
+}

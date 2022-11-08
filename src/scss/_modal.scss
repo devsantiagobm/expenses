@@ -1,0 +1,136 @@
+@use './colors' as *;
+@use './fonts' as *;
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background-color: rgba(0 0 0/.9 );
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    visibility: hidden;
+    opacity: 0;
+
+    &__box {
+        min-width: 300px;
+        color: $white;
+
+        &--shake {
+            animation: shake .150s ease;
+
+            @keyframes shake {
+                0% {
+                    transform: translate(3px, 0);
+                }
+
+                50% {
+                    transform: translate(-3px, 0);
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+        }
+    }
+
+    &__title {
+        background-color: $black;
+        padding: 12px 24px;
+        color: $white;
+        font-weight: $medium;
+        width: 100%;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 12px 24px;
+        font-size: .9rem;
+        background-color: $light-black;
+        transition: background-color .2s ease;
+
+        &:focus {
+            background-color: #282828;
+        }
+
+        &--open {
+            cursor: pointer;
+
+            &:hover {
+                background-color: #282828;
+
+            }
+        }
+    }
+
+    &__button {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        transform: rotate(45deg);
+        max-width: 24px;
+        cursor: pointer;
+        aspect-ratio: 1;
+    }
+
+
+    &__submit {
+        width: 100%;
+        color: $white;
+        font-size: .7rem;
+        cursor: pointer;
+        background-color: $blue;
+        padding: 12px 24px;
+        text-transform: uppercase;
+        transition: background-color .2s ease;
+        font-weight: $medium;
+
+        &:hover,
+        &:focus {
+            background-color: #3651ff;
+        }
+    }
+
+    &__category {
+        --height: 0px;
+        width: 100%;
+        max-height: var(--height);
+        overflow: hidden;
+        transition: max-height .2s ease;
+    }
+
+    &__option {
+        padding: 8px 24px;
+        background-color: #181818;
+        transition: background-color .2s ease;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #202020;
+        }
+
+        &--active {
+            background-color: #202020;
+        }
+    }
+
+    
+    &--active{
+        animation: show-in .5s ease both;
+
+        @keyframes show-in {
+            from{ visibility: hidden; opacity: 0;}
+            to{ visibility: visible; opacity: 1;}
+        }
+    }
+
+    &--hidden{
+        animation: show-off .5s ease both;
+
+        @keyframes show-off {
+            from{ visibility: visible; opacity: 1;}
+            to{ visibility: hidden; opacity: 0;}
+        }
+    }
+}
