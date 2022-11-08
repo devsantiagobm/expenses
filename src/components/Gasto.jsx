@@ -39,7 +39,7 @@ export default function Gasto({ gasto, keyId, gastos, setGastos, gastado, setGas
             <div className="expense__flex">
                 <picture className="expense__picture">
                     {/* <img src={`../src/assets/${imagenes[category]}`} alt="ahorro" /> dev */ } 
-                    <img src={`../src/assets/${imagenes[category]}`} alt="ahorro" />{ /* build */ }
+                    <img src={`./assets/${imagenes[category]}`} alt="ahorro" />{ /* build */ }
                 </picture>
 
                 <div className="expense__data">
