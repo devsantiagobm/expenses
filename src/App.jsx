@@ -68,7 +68,6 @@ function App() {
             >
 
             </Informacion>
-            <img src="./assets/food.svg" alt="" />
         </div>
     )
 }
